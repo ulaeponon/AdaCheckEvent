@@ -13,7 +13,7 @@ export default function Home({ query, trigger, favorites, toggleFavorite }) {
         try {
             const searchParam = query
                 ? `&where=title LIKE "%${encodeURIComponent(query)}%" OR description LIKE "%${encodeURIComponent(query)}%" OR address_street LIKE "%${encodeURIComponent(query)}%"`
-                : "";
+                : "";//si l'utilisateur saisit un mot(query) alors on declenche le where (condition de recherche )
 
             const res = await fetch(`https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/que-faire-a-paris-/records?limit=${limit}&offset=${offset}${searchParam}`);
             const data = await res.json();
